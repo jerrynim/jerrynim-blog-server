@@ -1,0 +1,12 @@
+node_modules
+
+yarn.lock
+
+generated
+
+yarn-error.log
+
+build
+/build
+
+prisma.yml

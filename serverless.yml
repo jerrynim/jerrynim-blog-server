@@ -1,0 +1,25 @@
+service: jerrynim-blog
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ap-northeast-2
+
+functions:
+  graphql:
+    handler: build/server.server
+    events:
+      - http:
+          path: /
+          method: post
+          cors: true
+  playground:
+    handler: build/server.playground
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true

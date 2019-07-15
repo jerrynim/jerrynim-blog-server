@@ -1,0 +1,9 @@
+type Post {
+  id: ID! @id @unique
+  title: String!
+  subTitle : String
+  content : String!
+  comments: [String]
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
