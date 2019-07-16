@@ -2,6 +2,7 @@
 
 export interface Query {
   getPosts: Array<Post>;
+  getTags: Array<Tag>;
 }
 
 export interface Post {
@@ -9,10 +10,16 @@ export interface Post {
   title: string;
   subTitle: string | null;
   content: string;
-  tags: Array<string>;
+  tags: Array<Tag>;
   comments: Array<string>;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface Tag {
+  id: string;
+  term: string;
+  posts: Array<Post>;
 }
 
 export interface Mutation {
@@ -52,10 +59,4 @@ export interface Comment {
   text: string;
   createdAt: string;
   updatedAt: string;
-}
-
-export interface Tag {
-  id: string;
-  term: string;
-  posts: Array<Post>;
 }

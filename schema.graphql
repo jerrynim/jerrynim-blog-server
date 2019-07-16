@@ -10,15 +10,7 @@ type Post {
   title: String!
   subTitle: String
   content: String!
-  tags: [String!]
-  comments: [String!]
-  createdAt: String!
-  updatedAt: String!
-  id: ID!
-  title: String!
-  subTitle: String
-  content: String!
-  tags: [String!]
+  tags: [Tag!]!
   comments: [String!]
   createdAt: String!
   updatedAt: String!
@@ -30,22 +22,15 @@ type Comment {
   text: String!
   createdAt: String!
   updatedAt: String!
-  id: ID!
-  post: Post
-  text: String!
-  createdAt: String!
-  updatedAt: String!
 }
 
 type Tag {
   id: ID!
   term: String!
   posts: [Post!]!
-  id: ID!
-  term: String!
-  posts: [Post!]!
 }
 
 type Query {
-  getPosts: [Post!]
+  getPosts: [Post!]!
+  getTags: [Tag!]
 }
