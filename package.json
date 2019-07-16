@@ -23,8 +23,9 @@
   },
   "scripts": {
     "prisma": "prisma deploy && prisma generate",
-    "pretypes": "gql-merge --out-file ./schema.graphql ./src/**/*.graphql",
+    "pretypes": "gql-merge --out-file ./schema.graphql ./src/Api/**/**.graphql ",
     "types": "graphql-to-typescript ./schema.graphql ./types/graph.d.ts",
+    "prebuild": "cd src && copy ./Api/**/*.graphql ../build/Api",
     "build": "gulp babel",
     "start": "sls offline"
   }

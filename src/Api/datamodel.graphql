@@ -3,7 +3,7 @@ type Post {
   title: String!
   subTitle: String
   content: String!
-  tags: [String!]
+  tags: [Tag!]!
   comments: [String!]
   createdAt: String!
   updatedAt: String!

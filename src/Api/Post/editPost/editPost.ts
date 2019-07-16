@@ -1,18 +1,28 @@
-import { CreatePostMutationArgs } from "../../../types/graph";
+import { EditPostMutationArgs } from "../../../../types/graph";
 import { prisma } from "../../../generated/prisma-client";
 
 export default {
   Mutation: {
-    createComment: async (_, args: CreatePostMutationArgs) => {
-      const { title, subTitle, content, tags } = args;
+    editPost: async (_, args: EditPostMutationArgs) => {
+      const { postId, title, subTitle, content, tags } = args;
       try {
-        //post를 만든후
-        const post = await prisma.createPost({
-          title,
-          subTitle,
-          content
+        //문자열을 update tags들을 모두 disconnect 해준다.
+        const postTags = await prisma.post({ id: postId }).tags();
+        postTags.map((tag) => delete tag.term);
+        await prisma.updatePost({
+          data: {
+            title,
+            subTitle,
+            content,
+            tags: {
+              disconnect: postTags
+            }
+          },
+          where: {
+            id: postId
+          }
         });
-        //태그들에 대하여
+        //우선 posts tags에서 tag들을 조회 만약 하는것보다 비우고 새로설정하자
         tags.map(async (term) => {
           //태그유무 확인
           const tag = await prisma.tag({ term });
@@ -28,7 +38,7 @@ export default {
                 }
               },
               where: {
-                id: post.id
+                id: postId
               }
             });
           } else {
@@ -43,11 +53,12 @@ export default {
                 }
               },
               where: {
-                id: post.id
+                id: postId
               }
             });
           }
         });
+        return true;
       } catch (e) {
         throw Error(e.message);
         return false;

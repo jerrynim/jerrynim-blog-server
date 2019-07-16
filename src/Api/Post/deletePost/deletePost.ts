@@ -1,4 +1,4 @@
-import { DeletePostMutationArgs } from "../../../types/graph";
+import { DeletePostMutationArgs } from "../../../../types/graph";
 import { prisma } from "../../../generated/prisma-client";
 
 export default {
