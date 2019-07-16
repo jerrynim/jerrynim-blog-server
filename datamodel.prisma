@@ -1,9 +1,25 @@
+
 type Post {
   id: ID! @id @unique
   title: String!
   subTitle : String
   content : String!
-  comments: [String]
+  tags: [Tag!]! @relation(name: "TagOfPost")
+  comments: [Comment!]! @relation(name: "CommentOfPost")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+}
+
+type Comment{
+  id: ID! @id @unique
+  post: Post @relation(name: "CommentOfPost")
+  text: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Tag {
+  id : ID! @id @unique
+  term: String! @unique
+  posts : [Post!]! @relation(name: "TagOfPost")
 }

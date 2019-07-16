@@ -1,6 +1,5 @@
 type Mutation {
-  editPost(
-    postId: String!
+  createPost(
     title: String!
     subTitle: String
     content: String!
