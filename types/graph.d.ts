@@ -9,6 +9,7 @@ export interface Post {
   id: string;
   title: string;
   subTitle: string | null;
+  thumbnail: string;
   content: string;
   tags: Array<Tag>;
   comments: Array<string>;
@@ -36,7 +37,8 @@ export interface AddCommentMutationArgs {
 
 export interface CreatePostMutationArgs {
   title: string;
-  subTitle: string | null;
+  subTitle: string;
+  thumbnail: string;
   content: string;
   tags: Array<string> | null;
 }
@@ -47,9 +49,10 @@ export interface DeletePostMutationArgs {
 
 export interface EditPostMutationArgs {
   postId: string;
-  title: string;
+  title: string | null;
   subTitle: string | null;
-  content: string;
+  thumbnail: string | null;
+  content: string | null;
   tags: Array<string> | null;
 }
 

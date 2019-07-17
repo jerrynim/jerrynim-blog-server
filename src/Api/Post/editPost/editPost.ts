@@ -1,19 +1,21 @@
 import { EditPostMutationArgs } from "../../../../types/graph";
 import { prisma } from "../../../generated/prisma-client";
+import cleanNullArgs from "../../../utils/cleanNullArgs";
 
 export default {
   Mutation: {
     editPost: async (_, args: EditPostMutationArgs) => {
-      const { postId, title, subTitle, content, tags } = args;
+      const { postId, tags = [] } = args;
+      delete args.postId;
+      delete args.tags;
+      const items = cleanNullArgs(args);
       try {
         //문자열을 update tags들을 모두 disconnect 해준다.
         const postTags = await prisma.post({ id: postId }).tags();
         postTags.map((tag) => delete tag.term);
         await prisma.updatePost({
           data: {
-            title,
-            subTitle,
-            content,
+            ...items,
             tags: {
               disconnect: postTags
             }
@@ -48,7 +50,7 @@ export default {
               data: {
                 tags: {
                   connect: {
-                    id: tag.id
+                    id: newTag.id
                   }
                 }
               },

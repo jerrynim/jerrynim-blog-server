@@ -10,3 +10,4 @@ build
 /build
 
 prisma.yml
+.serverless

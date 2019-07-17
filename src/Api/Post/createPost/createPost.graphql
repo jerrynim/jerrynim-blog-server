@@ -1,7 +1,8 @@
 type Mutation {
   createPost(
     title: String!
-    subTitle: String
+    subTitle: String!
+    thumbnail: String!
     content: String!
     tags: [String]
   ): Boolean!

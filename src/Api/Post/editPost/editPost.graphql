@@ -1,9 +1,10 @@
 type Mutation {
   editPost(
     postId: String!
-    title: String!
+    title: String
     subTitle: String
-    content: String!
+    thumbnail: String
+    content: String
     tags: [String]
   ): Boolean!
 }

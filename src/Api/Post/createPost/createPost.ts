@@ -1,15 +1,17 @@
 import { CreatePostMutationArgs } from "../../../../types/graph";
 import { prisma } from "../../../generated/prisma-client";
+import cleanNullArgs from "../../../utils/cleanNullArgs";
 
 export default {
   Mutation: {
     createPost: async (_, args: CreatePostMutationArgs) => {
-      const { title, subTitle, content, tags } = args;
+      const { title, subTitle, thumbnail, content, tags = [] } = args;
       try {
         //post를 만든후
         const post = await prisma.createPost({
           title,
           subTitle,
+          thumbnail,
           content
         });
         //태그들에 대하여

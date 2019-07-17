@@ -1,14 +1,15 @@
 type Mutation {
   addComment(postId: String!, text: String!): Boolean!
-  createPost(title: String!, subTitle: String, content: String!, tags: [String]): Boolean!
+  createPost(title: String!, subTitle: String!, thumbnail: String!, content: String!, tags: [String]): Boolean!
   deletePost(postId: String!): Boolean!
-  editPost(postId: String!, title: String!, subTitle: String, content: String!, tags: [String]): Boolean!
+  editPost(postId: String!, title: String, subTitle: String, thumbnail: String, content: String, tags: [String]): Boolean!
 }
 
 type Post {
   id: ID!
   title: String!
   subTitle: String
+  thumbnail: String!
   content: String!
   tags: [Tag!]!
   comments: [String!]
