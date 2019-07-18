@@ -12,7 +12,7 @@ type Post {
   thumbnail: String!
   content: String!
   tags: [Tag!]!
-  comments: [String!]
+  comments: [Comment!]
   createdAt: String!
   updatedAt: String!
 }
@@ -32,6 +32,7 @@ type Tag {
 }
 
 type Query {
+  getPost(title: String!): Post!
   getPosts: [Post!]!
   getTags: [Tag!]
 }

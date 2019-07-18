@@ -1,8 +1,13 @@
 /* tslint:disable */
 
 export interface Query {
+  getPost: Post;
   getPosts: Array<Post>;
   getTags: Array<Tag>;
+}
+
+export interface GetPostQueryArgs {
+  title: string;
 }
 
 export interface Post {
@@ -12,7 +17,7 @@ export interface Post {
   thumbnail: string;
   content: string;
   tags: Array<Tag>;
-  comments: Array<string>;
+  comments: Array<Comment>;
   createdAt: string;
   updatedAt: string;
 }
@@ -21,6 +26,14 @@ export interface Tag {
   id: string;
   term: string;
   posts: Array<Post>;
+}
+
+export interface Comment {
+  id: string;
+  post: Post | null;
+  text: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Mutation {
@@ -54,12 +67,4 @@ export interface EditPostMutationArgs {
   thumbnail: string | null;
   content: string | null;
   tags: Array<string> | null;
-}
-
-export interface Comment {
-  id: string;
-  post: Post | null;
-  text: string;
-  createdAt: string;
-  updatedAt: string;
 }
