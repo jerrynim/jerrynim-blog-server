@@ -15,8 +15,9 @@ export default {
             thumbnail,
             content
           });
-          //태그들에 대하여
-          tags.map(async (term) => {
+          //태그들에 대하여 공백 단위로 나눈다
+          const tagArray = tags.split(" ");
+          tagArray.map(async (term) => {
             //태그유무 확인
             const tag = await prisma.tag({ term });
             if (tag) {
@@ -53,7 +54,6 @@ export default {
           return true;
         } catch (e) {
           throw Error(e.message);
-          return false;
         }
       } else {
         throw Error("wrong password");

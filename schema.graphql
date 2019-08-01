@@ -1,6 +1,6 @@
 type Mutation {
   addComment(postId: String!, text: String!): Boolean!
-  createPost(title: String!, subTitle: String!, thumbnail: String!, content: String!, tags: [String]): Boolean!
+  createPost(title: String!, subTitle: String!, thumbnail: String!, content: String!, tags: String, password: String!): Boolean!
   deletePost(postId: String!): Boolean!
   editPost(postId: String!, title: String, subTitle: String, thumbnail: String, content: String, tags: [String]): Boolean!
 }

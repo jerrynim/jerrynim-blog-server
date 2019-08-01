@@ -53,7 +53,8 @@ export interface CreatePostMutationArgs {
   subTitle: string;
   thumbnail: string;
   content: string;
-  tags: Array<string> | null;
+  tags: string | null;
+  password: string;
 }
 
 export interface DeletePostMutationArgs {
