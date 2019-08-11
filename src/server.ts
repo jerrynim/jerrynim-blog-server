@@ -1,7 +1,15 @@
-import { GraphQLServerLambda } from "graphql-yoga";
 import schema from "./schema";
-const lambda = new GraphQLServerLambda({ schema });
+import { ApolloServer, gql } from "apollo-server-lambda";
+
 const port = process.env.PORT || 4000;
 
-export const server = lambda.graphqlHandler;
-export const playground = lambda.playgroundHandler;
+const server = new ApolloServer({
+  schema
+});
+
+exports.handler = server.createHandler({
+  cors: {
+    origin: "*",
+    credentials: true
+  }
+});

@@ -10,19 +10,38 @@ provider:
 
 functions:
   graphql:
-    handler: build/server.server
+    # this is formatted as <FILENAME>.<HANDLER>
+    handler: build/server.handler
     events:
       - http:
-          path: /
+          path: graphql
           method: post
           cors: true
-  playground:
-    handler: build/server.playground
-    events:
       - http:
-          path: /
+          path: graphql
           method: get
           cors: true
+
 custom:
   serverless-offline:
     port: 4000
+
+Resources:
+  GatewayResponseDefault4XX:
+    Type: "AWS::ApiGateway::GatewayResponse"
+    Properties:
+      ResponseParameters:
+        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+      ResponseType: DEFAULT_4XX
+      RestApiId:
+        Ref: "ApiGatewayRestApi"
+  GatewayResponseDefault5XX:
+    Type: "AWS::ApiGateway::GatewayResponse"
+    Properties:
+      ResponseParameters:
+        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+      ResponseType: DEFAULT_5XX
+      RestApiId:
+        Ref: "ApiGatewayRestApi"
