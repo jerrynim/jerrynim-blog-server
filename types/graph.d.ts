@@ -32,6 +32,7 @@ export interface Comment {
   id: string;
   post: Post | null;
   text: string;
+  nickname: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -45,6 +46,7 @@ export interface Mutation {
 
 export interface AddCommentMutationArgs {
   postId: string;
+  nickname: string;
   text: string;
 }
 

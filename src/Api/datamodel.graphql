@@ -14,6 +14,7 @@ type Comment {
   id: ID!
   post: Post
   text: String!
+  nickname: String!
   createdAt: String!
   updatedAt: String!
 }
