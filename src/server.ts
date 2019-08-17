@@ -1,15 +1,15 @@
 import schema from "./schema";
-import { ApolloServer, gql } from "apollo-server-lambda";
+import { GraphQLServer } from "graphql-yoga";
+import * as logger from "morgan";
 
-const port = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 
-const server = new ApolloServer({
+const server = new GraphQLServer({
   schema
 });
 
-exports.handler = server.createHandler({
-  cors: {
-    origin: "*",
-    credentials: true
-  }
-});
+server.express.use(logger("dev"));
+
+server.start({ port: PORT }, () =>
+  console.log(`Server running on http://localhost:${PORT}`)
+);

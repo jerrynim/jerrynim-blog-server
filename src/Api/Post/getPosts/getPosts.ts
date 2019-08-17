@@ -4,7 +4,9 @@ export default {
   Query: {
     getPosts: async () => {
       try {
-        return await prisma.posts({ first: 10 });
+        const result = await prisma.posts({ first: 10 });
+        console.log(result);
+        return result;
       } catch (e) {
         throw Error(e.message);
       }

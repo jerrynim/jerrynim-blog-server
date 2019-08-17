@@ -5,14 +5,18 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@types/morgan": "^1.7.36",
     "apollo-server-lambda": "^2.8.1",
     "aws-lambda": "^0.1.2",
     "graphql-to-typescript": "^0.1.2",
     "graphql-tools": "^4.0.5",
+    "graphql-yoga": "^1.18.1",
     "merge-graphql-schemas": "^1.5.8",
+    "morgan": "^1.9.1",
     "prisma": "^1.34.1",
     "prisma-client-lib": "^1.34.1",
-    "serverless": "^1.49.0"
+    "serverless": "^1.49.0",
+    "ts-node": "^8.3.0"
   },
   "devDependencies": {
     "@types/graphql": "^14.2.3",
@@ -29,7 +33,7 @@
     "types": "graphql-to-typescript ./schema.graphql ./types/graph.d.ts",
     "prebuild": "cd src && copy ./Api/**/*.graphql ../build/Api",
     "build": "gulp babel",
-    "start": "sls offline",
+    "start": "node build/server.js",
     "deploy": "sls deploy"
   }
 }
