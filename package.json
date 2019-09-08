@@ -5,26 +5,28 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@types/morgan": "^1.7.36",
-    "apollo-server-lambda": "^2.8.1",
-    "aws-lambda": "^0.1.2",
+    "apollo-server": "^2.9.0",
+    "dotenv": "^8.1.0",
     "graphql-to-typescript": "^0.1.2",
     "graphql-tools": "^4.0.5",
-    "graphql-yoga": "^1.18.1",
+    "graphql-upload": "^8.0.7",
     "merge-graphql-schemas": "^1.5.8",
     "morgan": "^1.9.1",
     "prisma": "^1.34.1",
     "prisma-client-lib": "^1.34.1",
-    "serverless": "^1.49.0",
     "ts-node": "^8.3.0"
   },
   "devDependencies": {
     "@types/graphql": "^14.2.3",
+    "@types/morgan": "^1.7.36",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
     "babel-runtime": "^6.26.0",
     "copy": "^0.3.2",
     "gql-merge": "^0.0.6",
     "gulp": "^4.0.2",
     "gulp-typescript": "^5.0.1",
+    "nodemon": "^1.19.1",
     "typescript": "^3.5.3"
   },
   "scripts": {
@@ -33,6 +35,7 @@
     "types": "graphql-to-typescript ./schema.graphql ./types/graph.d.ts",
     "prebuild": "cd src && copy ./Api/**/*.graphql ../build/Api",
     "build": "gulp babel",
+    "dev": "nodemon --exec ts-node src/server.ts -e ts,graphql",
     "start": "node build/server.js",
     "deploy": "sls deploy"
   }

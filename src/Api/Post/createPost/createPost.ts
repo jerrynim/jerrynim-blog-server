@@ -4,9 +4,10 @@ import cleanNullArgs from "../../../utils/cleanNullArgs";
 
 export default {
   Mutation: {
-    createPost: async (_, args: CreatePostMutationArgs) => {
+    createPost: async (_, args: CreatePostMutationArgs): Promise<boolean> => {
       const { title, subTitle, thumbnail, content, tags, password } = args;
-      if (password === "ckdwn123") {
+      console.log(process.env.PASSWORD);
+      if (password === process.env.PASSWORD) {
         try {
           //post를 만든후
           const post = await prisma.createPost({

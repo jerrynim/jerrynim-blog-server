@@ -5,7 +5,7 @@ yarn.lock
 generated
 
 yarn-error.log
-
+.env
 build
 /build
 

@@ -1,15 +1,19 @@
+import { ApolloServer } from "apollo-server";
 import schema from "./schema";
-import { GraphQLServer } from "graphql-yoga";
-import * as logger from "morgan";
+require("dotenv").config();
 
-const PORT = process.env.PORT || 4000;
-
-const server = new GraphQLServer({
-  schema
+const server = new ApolloServer({
+  schema,
+  formatError: (error): any => {
+    console.log(error);
+    return error;
+  },
+  formatResponse: (response): any => {
+    console.log(response);
+    return response;
+  }
 });
 
-server.express.use(logger("dev"));
-
-server.start({ port: PORT }, () =>
-  console.log(`Server running on http://localhost:${PORT}`)
-);
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
+});
