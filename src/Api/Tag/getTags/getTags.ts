@@ -4,7 +4,7 @@ export default {
   Query: {
     getTags: async () => {
       try {
-        return prisma.tags({ first: 10 });
+        return prisma.tags();
       } catch (e) {
         throw Error(e.message);
       }
