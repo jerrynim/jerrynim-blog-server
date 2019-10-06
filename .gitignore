@@ -9,5 +9,4 @@ yarn-error.log
 build
 /build
 
-prisma.yml
 .serverless
