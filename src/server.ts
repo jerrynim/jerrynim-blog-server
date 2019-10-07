@@ -11,7 +11,8 @@ const server = new ApolloServer({
   formatResponse: (response): any => {
     console.log(response);
     return response;
-  }
+  },
+  playground: true
 });
 
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
