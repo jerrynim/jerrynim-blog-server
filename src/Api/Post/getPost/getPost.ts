@@ -6,6 +6,7 @@ export default {
     getPost: async (_, args: GetPostQueryArgs) => {
       const { title } = args;
       const posts = await prisma.posts({ where: { title: title } });
+      console.log(posts);
       return posts[0];
     }
   }

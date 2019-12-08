@@ -1,3 +1,3 @@
 type Query {
-  getPost(title: String!): Post!
+  getPost(title: String!): Post
 }
