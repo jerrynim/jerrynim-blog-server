@@ -1,5 +1,4 @@
 name: my docker action # Workflow 이름
-on: [push]
 
 jobs:
   hello_world_job:

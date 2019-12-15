@@ -1,5 +1,4 @@
 name: my workflow # Workflow 이름
-on: [push] # Event 감지
 
 jobs: # Job 설정
   build: # Job ID
