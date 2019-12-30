@@ -1,7 +1,12 @@
 node_modules
 
 yarn.lock
+prisma.yml
 generated
+
 yarn-error.log
 .env
 build
+/build
+prisma.yml
+.serverless
