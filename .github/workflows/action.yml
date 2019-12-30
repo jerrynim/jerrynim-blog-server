@@ -1,5 +1,0 @@
-name: "Hello World"
-description: "Push to docker hub"
-runs:
-  using: "docker"
-  image: "Dockerfile"
