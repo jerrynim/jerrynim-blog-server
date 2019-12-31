@@ -9,7 +9,7 @@ COPY . /app
 # so that it can find and watch it's dependencies
 ENV PATH /app/node_modules/.bin:$PATH
 
-RUN echo $PRISMA_ENDPOINT docker env
+RUN PRISMA_ENDPOINT https://blog-jerrynim-92d0a49028.herokuapp.com
 RUN yarn && \
     yarn build
 

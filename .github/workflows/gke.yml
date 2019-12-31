@@ -65,7 +65,7 @@ jobs:
           docker build -t asia.gcr.io/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" .\
-            && echo $ PRISMA_ENDPOINT actions env
+            && echo $PRISMA_ENDPOINT actions env
         env:
           PRISMA_ENDPOINT: ${{secrets.PRISMA_ENDPOINT}}
 

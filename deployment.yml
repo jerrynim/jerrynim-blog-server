@@ -15,9 +15,7 @@ spec:
     spec:
       containers:
         - name: jerrynim-blog-server-container
-          # Replace $GCLOUD_PROJECT with your project ID
-          image: gcr.io/$GCLOUD_PROJECT/jerrynim-blog-server:latest
-          # This app listens on port 8080 for web traffic by default.
+          image: asia.gcr.io/jerrynim-blog/jerrynim-blog-server:latest
           ports:
             - containerPort: 4000
           env:
