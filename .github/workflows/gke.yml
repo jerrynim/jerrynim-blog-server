@@ -72,7 +72,7 @@ jobs:
       # Push the Docker image to Google Container Registry
       - name: Publish
         run: |
-          docker push gcr.io/$GKE_PROJECT/$IMAGE:$GITHUB_SHA
+          docker push asia.gcr.io/$GKE_PROJECT/$IMAGE:$GITHUB_SHA
 
       # Set up kustomize
       - name: Set up Kustomize
@@ -83,7 +83,7 @@ jobs:
       - name: Deploy
         run: |
           gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
-          ./kustomize edit set image gcr.io/$GKE_PROJECT/$IMAGE:${GITHUB_SHA}
+          ./kustomize edit set image asia.gcr.io/$GKE_PROJECT/$IMAGE:${GITHUB_SHA}
           ./kustomize build . | kubectl apply -f -
           kubectl rollout status deployment/jerrynim-blog
           kubectl get services -o wide
