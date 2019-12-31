@@ -2,24 +2,24 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: helloworld-gke
+  name: jerrynim-blog-server-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello
+      app: jerrynim-blog-server
   template:
     metadata:
       labels:
-        app: hello
+        app: jerrynim-blog-server
     spec:
       containers:
-        - name: hello-app
+        - name: jerrynim-blog-server-container
           # Replace $GCLOUD_PROJECT with your project ID
-          image: gcr.io/$GCLOUD_PROJECT/helloworld-gke:latest
+          image: gcr.io/$GCLOUD_PROJECT/jerrynim-blog-server:latest
           # This app listens on port 8080 for web traffic by default.
           ports:
-            - containerPort: 8080
+            - containerPort: 4000
           env:
             - name: PORT
-              value: "8080"
+              value: "4000"

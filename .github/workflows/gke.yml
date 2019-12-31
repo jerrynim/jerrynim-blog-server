@@ -33,9 +33,9 @@ env:
   GKE_PROJECT: ${{ secrets.GKE_PROJECT }}
   GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
   GITHUB_SHA: ${{ github.sha }}
-  GKE_ZONE: asia-northeast1-a
+  GKE_ZONE: asia-northeast1
   GKE_CLUSTER: jerrynim-blog-cluster
-  IMAGE: jerrynim-blog
+  IMAGE: jerrynim-blog-server
   PRISMA_ENDPOINT: ${{secrets.PRISMA_ENDPOINT}}
 
 jobs:
