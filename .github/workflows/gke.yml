@@ -62,7 +62,7 @@ jobs:
       # Build the Docker image
       - name: Build
         run: |
-          export PRISMA_ENDPOINT="$PRISMA_ENDPOINT" \
+          export PRISMA_ENDPOINT="$PRISMA_ENDPOINT" && \
           docker build -t gcr.io/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" .
